@@ -109,4 +109,13 @@ public class DefaultEventManagerTest
         {
         }
     }
+
+    // Task 1
+    @Test
+    public void testTask1() {
+        EventListenerMock eventListenerMock = new EventListenerMock(new Class[]{SimpleEvent.class});
+        eventManager.registerListener("some.key", eventListenerMock);
+        eventManager.publishEvent(new SubEvent(this));
+        assertFalse(eventListenerMock.isCalled());
+    }
 }
